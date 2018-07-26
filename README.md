@@ -12,7 +12,7 @@ __Concepts used:__
   * Filter2D
   * Array Stacking
   
-__output (Left image is output | Right image is input):__
+__output (Left image is input| Right image is output):__
 
 ![output1](sharpened_images/0.jpg "Image")
 ![output2](sharpened_images/5.jpg "Image")
