@@ -1,3 +1,10 @@
+"""
+Title: Google Maps Image Sharpening for savera.ai
+Author: Jitender Singh Virk (Virksaab)
+Date created: 24 July, 2018
+Last Modified: 26 July, 2018
+"""
+
 import numpy as np
 import cv2
 import os
