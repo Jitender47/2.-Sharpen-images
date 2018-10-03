@@ -24,10 +24,17 @@ for i, imgpath in enumerate(imagepaths):
     bgrimg = cv2.resize(bgrimg, (800, 600), interpolation=cv2.INTER_CUBIC)
 
     start = time.time()
+    
+    # HIGH SHARPEN
+    kernel_sharp = np.array(([-2, -2, -2], [-2, 17, -2], [-2, -2, -2]), dtype='int') # High sharpening
+    sbgrimg = cv2.filter2D(bgrimg, -1, kernel_sharp) # image sharpening
+    sbgrimg = cv2.bilateralFilter(sbgrimg, 9, 75, 75) # Noise reduction
 
-    # SHARPEN
-    kernel_sharp = np.array(([-2, -2, -2], [-2, 17, -2], [-2, -2, -2]), dtype='int')
-    sbgrimg = cv2.filter2D(bgrimg, -1, kernel_sharp)
+#     # LOW SHARPEN
+#     kernel_sharp = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]]) # Low sharpening
+#     sbgrimg = cv2.filter2D(bgrimg, -1, kernel_sharp) # image sharpening
+#     sbgrimg = cv2.bilateralFilter(sbgrimg, 3, 75, 75) # Noise reduction
+    
     stacked3d = np.hstack((bgrimg, sbgrimg))
     print("time taken: {:.4f} sec by image {}".format(time.time() - start, i))
     # cv2.imshow("SHARPEN", stacked3d)
